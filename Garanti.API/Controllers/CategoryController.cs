@@ -34,6 +34,12 @@ namespace Garanti.API.Controllers
         public IActionResult Get(Guid id)
         {
             var category = _categoryRepository.GetById(id);
+
+            if (category == null)
+            {
+                return NotFound($"Category with id {id} not found");
+            }
+
             var response = new GetCategoryByIdResponseDto
             {
                 Id = category.Id,
@@ -45,7 +51,7 @@ namespace Garanti.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCategory([FromBody] CreateCategoryDto createCategoryDto)
+        public IActionResult CreateCategory(CreateCategoryRequestDto createCategoryDto)
         {
 
             Category category = new Category
@@ -56,7 +62,7 @@ namespace Garanti.API.Controllers
 
             _categoryRepository.Crate(category);
             
-            return Ok();
+            return Ok(category.Id);
         }
 
         [HttpDelete("{id}")]
@@ -66,15 +72,27 @@ namespace Garanti.API.Controllers
             return Ok();
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateCategory(Guid id, UpdateCategoryRequestDto updateCategoryDto)
+        {
+            var category = _categoryRepository.GetById(id);
+
+            if (category == null)
+            {
+                return NotFound($"Category with id {id} not found");
+            }
+
+            category.Name = updateCategoryDto.Name;
+            category.Description = updateCategoryDto.Description;
+            _categoryRepository.Update(category);
+            return Ok();
+        }
+
+
+
 
 
 
     }
 }
 
-
-public class CreateCategoryDto
-{
-    public string Name { get; set; }
-    public string Description { get; set; }
-}

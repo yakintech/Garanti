@@ -36,6 +36,10 @@ namespace Garanti.Infrastructure.Repositories
                 entity.IsDeleted = true;
                 _context.SaveChanges();
             }
+            else
+            {
+                throw new Exception("Entity not found");
+            }
 
         }
 
