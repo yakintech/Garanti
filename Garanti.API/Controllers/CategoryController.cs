@@ -11,10 +11,10 @@ namespace Garanti.API.Controllers
     public class CategoryController : ControllerBase
     {
 
-        private readonly GenericRepository<Category> _categoryRepository;
-        public CategoryController()
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryController(ICategoryRepository categoryRepository)
         {
-            _categoryRepository = new GenericRepository<Category>();
+            _categoryRepository = categoryRepository;
         }
 
         [HttpGet]
@@ -60,7 +60,7 @@ namespace Garanti.API.Controllers
                 Description = createCategoryDto.Description
             };
 
-            _categoryRepository.Crate(category);
+            _categoryRepository.Create(category);
             
             return Ok(category.Id);
         }

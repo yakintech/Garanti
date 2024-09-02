@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.API", "Garanti.API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.Dto", "Garanti.Dto\Garanti.Dto.csproj", "{928F4D10-ACF5-4B71-95C0-0D3B61FFD729}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignPatterns", "DesignPatterns", "{1B1FF4E5-8384-4921-8394-3EEC71B506A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionPattern", "DependencyInjectionPattern\DependencyInjectionPattern.csproj", "{782046F7-28E2-45FD-BDC6-A3DB96965C4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{928F4D10-ACF5-4B71-95C0-0D3B61FFD729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{928F4D10-ACF5-4B71-95C0-0D3B61FFD729}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{928F4D10-ACF5-4B71-95C0-0D3B61FFD729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{782046F7-28E2-45FD-BDC6-A3DB96965C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782046F7-28E2-45FD-BDC6-A3DB96965C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782046F7-28E2-45FD-BDC6-A3DB96965C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782046F7-28E2-45FD-BDC6-A3DB96965C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{782046F7-28E2-45FD-BDC6-A3DB96965C4F} = {1B1FF4E5-8384-4921-8394-3EEC71B506A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8141D110-E6E0-46C9-8196-1D397C6C6EE1}

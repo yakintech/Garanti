@@ -13,8 +13,11 @@ namespace Garanti.Infrastructure.Repositories
 
         IQueryable<T> GetAllWithQuery(Expression<Func<T, bool>> query);
         IQueryable<T> GetAll();
+        IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeProperties);
         T GetById(Guid id);
-        T Crate(T entity);
+
+        T GetById(Guid id, params Expression<Func<T, object>>[] includeProperties);
+        T Create(T entity);
         T Update(T entity);
         void Delete(Guid id);
     }

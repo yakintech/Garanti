@@ -21,14 +21,14 @@ namespace Garanti.Infrastructure.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        public T Crate(T entity)
+        public virtual T Create(T entity)
         {
             _dbSet.Add(entity);
             _context.SaveChanges();
             return entity;
         }
 
-        public void Delete(Guid id)
+        public virtual void Delete(Guid id)
         {
             var entity = _dbSet.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
             if (entity != null)
@@ -43,27 +43,48 @@ namespace Garanti.Infrastructure.Repositories
 
         }
 
-        public T GetById(Guid id)
+        public virtual T GetById(Guid id)
         {
             var entity = _dbSet.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
             return entity;
         }
 
-        public T Update(T entity)
+        public virtual T GetById(Guid id, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            var entity = query.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+            return entity;
+        }
+
+        public virtual T Update(T entity)
         {
             _dbSet.Update(entity);
             _context.SaveChanges();
             return entity;
         }
 
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return _dbSet.Where(x => x.IsDeleted == false);
         }
 
-        public IQueryable<T> GetAllWithQuery(Expression<Func<T, bool>> query)
+        public virtual IQueryable<T> GetAllWithQuery(Expression<Func<T, bool>> query)
         {
             return _dbSet.Where(query).Where(x => x.IsDeleted == false);
+        }
+
+        public virtual IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return query.Where(x => x.IsDeleted == false);
         }
     }
 }
