@@ -56,6 +56,20 @@ namespace Garanti.API.Controllers
             return Ok();
         }
 
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] UpdateCategoryRequestDto model)
+        {
+            var command = new UpdateCategoryCommand
+            {
+                Id = id,
+                Name = model.Name,
+                Description = model.Description
+            };
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
        
 
     }

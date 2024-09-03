@@ -2,7 +2,8 @@ using Garanti.Application.Commands;
 using Garanti.Application.Queries;
 using Garanti.Infrastructure;
 using Garanti.Infrastructure.EF;
-using Garanti.Infrastructure.Repositories;
+using Garanti.Infrastructure.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,10 +18,7 @@ builder.Services.AddDbContext<GarantiContext>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+builder.Services.AddRepositories();
 
 
 
@@ -31,6 +29,7 @@ builder.Services.AddMediatR(opt =>
     opt.RegisterServicesFromAssemblyContaining<GetAllProductsWithPaginationQuery>();
     opt.RegisterServicesFromAssemblyContaining<CreateCategoryCommand>();
     opt.RegisterServicesFromAssemblyContaining<DeleteCategoryCommand>();
+    opt.RegisterServicesFromAssemblyContaining<UpdateCategoryCommand>();
 });
 
 

@@ -61,7 +61,18 @@ namespace Garanti.Infrastructure.Repositories
             return entity;
         }
 
+        public virtual async Task<T> GetByIdAsync(Guid id)
+        {
+            var entity = await _dbSet.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
+            return entity;
+        }
         public virtual T Update(T entity)
+        {
+            _dbSet.Update(entity);
+            return entity;
+        }
+
+        public virtual async Task<T> UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
             return entity;

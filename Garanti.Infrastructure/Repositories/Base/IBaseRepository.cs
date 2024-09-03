@@ -18,11 +18,13 @@ namespace Garanti.Infrastructure.Repositories
         //GetAll Include and pagination
         IQueryable<T> GetAll(int page, int pageSize, params Expression<Func<T, object>>[] includeProperties);
         T GetById(Guid id);
+        Task<T> GetByIdAsync(Guid id);
 
         T GetById(Guid id, params Expression<Func<T, object>>[] includeProperties);
         T Create(T entity);
         Task<T> CreateAsync(T entity);
         T Update(T entity);
+        Task<T> UpdateAsync(T entity);
         void Delete(Guid id);
         Task DeleteAsync(Guid id);
     }

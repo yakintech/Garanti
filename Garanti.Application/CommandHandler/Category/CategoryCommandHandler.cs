@@ -52,4 +52,31 @@ namespace Garanti.Application.CommandHandler
             
         }
     }
+
+    public class  UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, Guid> 
+    { 
+        private readonly IUnitOfWork unitOfWork;
+
+        public UpdateCategoryCommandHandler(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
+
+        public async Task<Guid> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+        {
+            var category = await unitOfWork.CategoryRepository.GetByIdAsync(request.Id);
+            if (category == null)
+            {
+                throw new Exception("Category not found");
+            }
+
+            category.Name = request.Name;
+            category.Description = request.Description;
+
+            await unitOfWork.CategoryRepository.UpdateAsync(category);
+            await unitOfWork.CommitAsync();
+
+            return category.Id;
+        }
+    }
 }

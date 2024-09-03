@@ -18,16 +18,18 @@ namespace Garanti.API.Controllers
         }
 
         [HttpGet("{page}/{pageSize}")]
-        public IActionResult GetAllProducts(int page, int pageSize)
+        public async Task<IActionResult> GetAllProducts(int page, int pageSize)
         {
             var query = new GetAllProductsWithPaginationQuery
             {
                 Page = page,
                 PageSize = pageSize
             };
-            var response = _mediator.Send(query);
+            var response = await _mediator.Send(query);
             return Ok(response);
         }
+
+      
         
     }
 }
