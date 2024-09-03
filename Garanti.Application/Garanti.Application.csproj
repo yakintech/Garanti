@@ -1,20 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>false</InvariantGlobalization>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Garanti.Application\Garanti.Application.csproj" />
-    <ProjectReference Include="..\Garanti.Domain\Garanti.Domain.csproj" />
     <ProjectReference Include="..\Garanti.Dto\Garanti.Dto.csproj" />
     <ProjectReference Include="..\Garanti.Infrastructure\Garanti.Infrastructure.csproj" />
   </ItemGroup>

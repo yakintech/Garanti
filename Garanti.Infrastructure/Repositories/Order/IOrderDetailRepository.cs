@@ -1,5 +1,5 @@
 ﻿using Garanti.Domain.Models;
-using Garanti.Infrastructure.EF;
+using Garanti.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,7 @@ using System.Threading.Tasks;
 
 namespace Garanti.Infrastructure.Repositories
 {
-    public class ProductRepository : GenericRepository<Product>, IProductRepository
+    public interface IOrderDetailRepository : IBaseRepository<OrderDetails>
     {
-        public ProductRepository(GarantiContext context) : base(context)
-        {
-        }
     }
 }

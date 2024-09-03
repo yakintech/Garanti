@@ -15,16 +15,15 @@ namespace Garanti.Infrastructure.Repositories
 
         internal GarantiContext _context;
         internal DbSet<T> _dbSet;
-        public GenericRepository()
+        public GenericRepository(GarantiContext garantiContext)
         {
-            _context = new GarantiContext();
+            _context = garantiContext;
             _dbSet = _context.Set<T>();
         }
 
         public virtual T Create(T entity)
         {
             _dbSet.Add(entity);
-            _context.SaveChanges();
             return entity;
         }
 
@@ -34,7 +33,6 @@ namespace Garanti.Infrastructure.Repositories
             if (entity != null)
             {
                 entity.IsDeleted = true;
-                _context.SaveChanges();
             }
             else
             {
@@ -63,7 +61,6 @@ namespace Garanti.Infrastructure.Repositories
         public virtual T Update(T entity)
         {
             _dbSet.Update(entity);
-            _context.SaveChanges();
             return entity;
         }
 

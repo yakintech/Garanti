@@ -1,3 +1,6 @@
+using Garanti.Application.Queries;
+using Garanti.Infrastructure;
+using Garanti.Infrastructure.EF;
 using Garanti.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +12,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<GarantiContext>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+
+
+
+builder.Services.AddMediatR(opt =>
+{
+    opt.RegisterServicesFromAssemblyContaining<GetAllCategoriesQuery>();
+});
+
 
 var app = builder.Build();
 

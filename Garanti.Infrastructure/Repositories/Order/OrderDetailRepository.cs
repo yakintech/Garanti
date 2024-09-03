@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace Garanti.Infrastructure.Repositories
 {
-    public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
+    public class OrderDetailRepository : GenericRepository<OrderDetails>, IOrderDetailRepository
     {
-        public CategoryRepository(GarantiContext context) : base(context)
+        public OrderDetailRepository(GarantiContext context) : base(context)
         {
-
         }
-       
     }
 }
