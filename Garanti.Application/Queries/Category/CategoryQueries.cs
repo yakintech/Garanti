@@ -12,5 +12,10 @@ namespace Garanti.Application.Queries
     public class GetAllCategoriesQuery : IRequest<List<GetAllCategoriesResponseDto>>
     {
     }
+
+    public class GetCategoryByIdQuery : IRequest<GetCategoryByIdResponseDto>
+    {
+        public Guid Id { get; set; }
+    }
    
 }

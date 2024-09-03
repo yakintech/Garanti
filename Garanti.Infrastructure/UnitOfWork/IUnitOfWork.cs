@@ -14,5 +14,7 @@ namespace Garanti.Infrastructure
         IProductRepository ProductRepository { get; }
         IOrderDetailRepository OrderDetailRepository { get; }
         void Commit();
+
+        Task CommitAsync();
     }
 }

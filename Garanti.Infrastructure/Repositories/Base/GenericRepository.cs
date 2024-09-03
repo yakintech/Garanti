@@ -23,6 +23,9 @@ namespace Garanti.Infrastructure.Repositories
 
         public virtual T Create(T entity)
         {
+            entity.IsDeleted = false;
+            entity.CreatedDate = DateTime.Now;
+            entity.IsActive = true;
             _dbSet.Add(entity);
             return entity;
         }
@@ -82,6 +85,38 @@ namespace Garanti.Infrastructure.Repositories
                 query = query.Include(includeProperty);
             }
             return query.Where(x => x.IsDeleted == false);
+        }
+
+        public IQueryable<T> GetAll(int page, int pageSize, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return query.Where(x => x.IsDeleted == false).Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public Task<T> CreateAsync(T entity)
+        {
+            entity.IsDeleted = false;
+            entity.CreatedDate = DateTime.Now;
+            entity.IsActive = true;
+            _dbSet.Add(entity);
+            return Task.FromResult(entity);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var entity = await _dbSet.FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
+            if (entity != null)
+            {
+                entity.IsDeleted = true;
+            }
+            else
+            {
+                throw new Exception("Entity not found");
+            }
         }
     }
 }

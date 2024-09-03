@@ -41,6 +41,11 @@ namespace Garanti.Infrastructure
             _context.SaveChanges();
         }
 
+        public async Task CommitAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
             _context.Dispose();

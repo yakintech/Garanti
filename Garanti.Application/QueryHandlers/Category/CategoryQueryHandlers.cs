@@ -35,4 +35,29 @@ namespace Garanti.Application.QueryHandlers
             return result;
         }
     }
+
+
+    public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery, GetCategoryByIdResponseDto>
+    {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public GetCategoryByIdQueryHandler(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task<GetCategoryByIdResponseDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
+        {
+            var category = _unitOfWork.CategoryRepository.GetById(request.Id);
+            var result = new GetCategoryByIdResponseDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Description = category.Description,
+                CreatedDate = category.CreatedDate
+            };
+
+            return result;
+        }
+    }
 }

@@ -1,3 +1,4 @@
+using Garanti.Application.Commands;
 using Garanti.Application.Queries;
 using Garanti.Infrastructure;
 using Garanti.Infrastructure.EF;
@@ -26,6 +27,10 @@ builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 builder.Services.AddMediatR(opt =>
 {
     opt.RegisterServicesFromAssemblyContaining<GetAllCategoriesQuery>();
+    opt.RegisterServicesFromAssemblyContaining<GetCategoryByIdQuery>();
+    opt.RegisterServicesFromAssemblyContaining<GetAllProductsWithPaginationQuery>();
+    opt.RegisterServicesFromAssemblyContaining<CreateCategoryCommand>();
+    opt.RegisterServicesFromAssemblyContaining<DeleteCategoryCommand>();
 });
 
 
