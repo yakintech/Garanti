@@ -11,6 +11,8 @@ namespace Garanti.Infrastructure.Repositories
     public interface IBaseRepository<T> where T : BaseEntity
     {
 
+
+        T Get(Expression<Func<T, bool>> query);
         IQueryable<T> GetAllWithQuery(Expression<Func<T, bool>> query);
         IQueryable<T> GetAll();
         IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeProperties);

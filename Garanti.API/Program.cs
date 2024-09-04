@@ -1,8 +1,13 @@
+using Garanti.API.Middleware;
 using Garanti.Application.Commands;
 using Garanti.Application.Queries;
 using Garanti.Infrastructure;
 using Garanti.Infrastructure.EF;
 using Garanti.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,12 +21,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<GarantiContext>();
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-builder.Services.AddRepositories();
-
-
-
 builder.Services.AddMediatR(opt =>
 {
     opt.RegisterServicesFromAssemblyContaining<GetAllCategoriesQuery>();
@@ -30,8 +29,36 @@ builder.Services.AddMediatR(opt =>
     opt.RegisterServicesFromAssemblyContaining<CreateCategoryCommand>();
     opt.RegisterServicesFromAssemblyContaining<DeleteCategoryCommand>();
     opt.RegisterServicesFromAssemblyContaining<UpdateCategoryCommand>();
+    opt.RegisterServicesFromAssemblyContaining<AdminUserLoginCommand>();
 });
 
+
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddRepositories();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "Jwt:GarantiBank",
+        ValidAudience = "Jwt:GarantiBank",
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("loremipsumloremipsumloremipsumloremipsum"))
+    };
+});
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -44,6 +71,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -16,6 +16,7 @@ namespace Garanti.Infrastructure.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            services.AddScoped<IAdminUserRepository, AdminUserRepository>();
 
             return services;
         }

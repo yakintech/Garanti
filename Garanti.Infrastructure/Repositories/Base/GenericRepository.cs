@@ -129,5 +129,11 @@ namespace Garanti.Infrastructure.Repositories
                 throw new Exception("Entity not found");
             }
         }
+
+        public T Get(Expression<Func<T, bool>> query)
+        {
+            var entity = _dbSet.Where(q => q.IsDeleted == false).FirstOrDefault(query);
+            return entity;
+        }
     }
 }

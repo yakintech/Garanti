@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Garanti.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductCQRSController : ControllerBase
+    public class ProductCQRSController : BaseController
     {
 
         private readonly IMediator _mediator;

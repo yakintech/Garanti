@@ -1,4 +1,5 @@
-﻿using Garanti.Domain.Models;
+﻿using Garanti.Application.Exceptions;
+using Garanti.Domain.Models;
 using Garanti.Dto;
 using Garanti.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -6,9 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Garanti.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoryController : BaseController
     {
 
         private readonly ICategoryRepository _categoryRepository;
@@ -37,7 +36,7 @@ namespace Garanti.API.Controllers
 
             if (category == null)
             {
-                return NotFound($"Category with id {id} not found");
+               throw new DataNotFoundException($"Category with id {id} not found");
             }
 
             var response = new GetCategoryByIdResponseDto

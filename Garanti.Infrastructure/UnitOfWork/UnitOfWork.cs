@@ -16,24 +16,29 @@ namespace Garanti.Infrastructure
         private IOrderRepository _orderRepository;
         private IProductRepository _productRepository;
         private IOrderDetailRepository _orderDetailRepository;
+        private IAdminUserRepository _adminUserRepository;
 
         public UnitOfWork(GarantiContext context
              , ICategoryRepository categoryRepository
             , IOrderRepository orderRepository
             , IProductRepository productRepository
-            , IOrderDetailRepository orderDetailRepository)
+            , IOrderDetailRepository orderDetailRepository
+            , IAdminUserRepository adminUserRepository
+            )
         {
             _context = context;
             _categoryRepository = categoryRepository;
             _orderRepository = orderRepository;
             _productRepository = productRepository;
             _orderDetailRepository = orderDetailRepository;
+            _adminUserRepository = adminUserRepository;
         }
 
         public ICategoryRepository CategoryRepository => _categoryRepository;
         public IOrderRepository OrderRepository => _orderRepository;
         public IProductRepository ProductRepository => _productRepository;
         public IOrderDetailRepository OrderDetailRepository => _orderDetailRepository;
+        public IAdminUserRepository AdminUserRepository => _adminUserRepository;
 
 
         public void Commit()
