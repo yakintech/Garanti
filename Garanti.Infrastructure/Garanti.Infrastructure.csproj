@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Garanti.Domain\Garanti.Domain.csproj" />
+    <ProjectReference Include="..\Garanti.Dto\Garanti.Dto.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿using Garanti.Application.Queries;
+﻿using Garanti.Application.Commands;
+using Garanti.Application.Queries;
+using Garanti.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +29,20 @@ namespace Garanti.API.Controllers
             return Ok(response);
         }
 
-      
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequestDto model)
+        { 
+            var command = new CreateProductCommand
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Stock = model.Stock,
+                CategoryId = model.CategoryId
+            };
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
         
     }
 }

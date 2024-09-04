@@ -1,9 +1,9 @@
+using Garanti.API.Extensions;
 using Garanti.API.Middleware;
 using Garanti.Application.Commands;
 using Garanti.Application.Queries;
 using Garanti.Infrastructure;
 using Garanti.Infrastructure.EF;
-using Garanti.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -30,6 +30,7 @@ builder.Services.AddMediatR(opt =>
     opt.RegisterServicesFromAssemblyContaining<DeleteCategoryCommand>();
     opt.RegisterServicesFromAssemblyContaining<UpdateCategoryCommand>();
     opt.RegisterServicesFromAssemblyContaining<AdminUserLoginCommand>();
+    opt.RegisterServicesFromAssemblyContaining<CreateProductCommand>();
 });
 
 
@@ -38,6 +39,7 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddRepositories();
+builder.Services.AddValidations();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -71,7 +73,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseMiddleware<ExceptionMiddleware>();
+//app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();

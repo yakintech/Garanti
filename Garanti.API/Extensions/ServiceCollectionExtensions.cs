@@ -1,12 +1,10 @@
-﻿using Garanti.Infrastructure.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Garanti.Application.Validators;
+using Garanti.Dto;
+using Garanti.Infrastructure.Repositories;
 
-namespace Garanti.Infrastructure.Extensions
+namespace Garanti.API.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -17,6 +15,15 @@ namespace Garanti.Infrastructure.Extensions
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();
+
+            return services;
+        }
+
+
+        public static IServiceCollection AddValidations(this IServiceCollection services)
+        {
+            services.AddFluentValidationAutoValidation();
+            services.AddScoped<IValidator<CreateProductRequestDto>, CreateProductValidator>();
 
             return services;
         }
