@@ -3,25 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.Domain", "Garanti.Domain\Garanti.Domain.csproj", "{EA8604C3-D4AB-4E8A-B350-1601D0379B54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garanti.Domain", "Garanti.Domain\Garanti.Domain.csproj", "{EA8604C3-D4AB-4E8A-B350-1601D0379B54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.Infrastructure", "Garanti.Infrastructure\Garanti.Infrastructure.csproj", "{93A2FE8D-B252-4900-8EC8-01644720434C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garanti.Infrastructure", "Garanti.Infrastructure\Garanti.Infrastructure.csproj", "{93A2FE8D-B252-4900-8EC8-01644720434C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.API", "Garanti.API\Garanti.API.csproj", "{AA06382C-FF97-4061-ABA8-256E0C00C5CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garanti.API", "Garanti.API\Garanti.API.csproj", "{AA06382C-FF97-4061-ABA8-256E0C00C5CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.Dto", "Garanti.Dto\Garanti.Dto.csproj", "{928F4D10-ACF5-4B71-95C0-0D3B61FFD729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garanti.Dto", "Garanti.Dto\Garanti.Dto.csproj", "{928F4D10-ACF5-4B71-95C0-0D3B61FFD729}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignPatterns", "DesignPatterns", "{1B1FF4E5-8384-4921-8394-3EEC71B506A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionPattern", "DependencyInjectionPattern\DependencyInjectionPattern.csproj", "{782046F7-28E2-45FD-BDC6-A3DB96965C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionPattern", "DependencyInjectionPattern\DependencyInjectionPattern.csproj", "{782046F7-28E2-45FD-BDC6-A3DB96965C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorPattern", "MediatorPattern\MediatorPattern.csproj", "{5E34405C-B382-4FFD-96A7-07A6532CE161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatorPattern", "MediatorPattern\MediatorPattern.csproj", "{5E34405C-B382-4FFD-96A7-07A6532CE161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garanti.Application", "Garanti.Application\Garanti.Application.csproj", "{8FEFA363-1FBF-40B3-8257-7F2D9826B33E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garanti.Application", "Garanti.Application\Garanti.Application.csproj", "{8FEFA363-1FBF-40B3-8257-7F2D9826B33E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DISingletonScopedTransient", "DISingletonScopedTransient\DISingletonScopedTransient.csproj", "{726D6BFB-792F-4DE1-9681-E942A46AFECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DISingletonScopedTransient", "DISingletonScopedTransient\DISingletonScopedTransient.csproj", "{726D6BFB-792F-4DE1-9681-E942A46AFECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonPattern", "SingletonPattern\SingletonPattern.csproj", "{5EF6C6BF-5146-49CC-972C-4BFB6F5D2C62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingletonPattern", "SingletonPattern\SingletonPattern.csproj", "{5EF6C6BF-5146-49CC-972C-4BFB6F5D2C62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OOP", "OOP", "{96580E5D-231F-4816-916E-239EDD006ABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPMix", "OOPMix\OOPMix.csproj", "{D19277FE-4174-43D0-8D68-8C502A588CA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +69,10 @@ Global
 		{5EF6C6BF-5146-49CC-972C-4BFB6F5D2C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EF6C6BF-5146-49CC-972C-4BFB6F5D2C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EF6C6BF-5146-49CC-972C-4BFB6F5D2C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19277FE-4174-43D0-8D68-8C502A588CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19277FE-4174-43D0-8D68-8C502A588CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19277FE-4174-43D0-8D68-8C502A588CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19277FE-4174-43D0-8D68-8C502A588CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +81,7 @@ Global
 		{782046F7-28E2-45FD-BDC6-A3DB96965C4F} = {1B1FF4E5-8384-4921-8394-3EEC71B506A7}
 		{5E34405C-B382-4FFD-96A7-07A6532CE161} = {1B1FF4E5-8384-4921-8394-3EEC71B506A7}
 		{5EF6C6BF-5146-49CC-972C-4BFB6F5D2C62} = {1B1FF4E5-8384-4921-8394-3EEC71B506A7}
+		{D19277FE-4174-43D0-8D68-8C502A588CA3} = {96580E5D-231F-4816-916E-239EDD006ABF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8141D110-E6E0-46C9-8196-1D397C6C6EE1}

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Garanti.Domain.Models
 {
     //Base entity tum tablolarda bulunacak olan ortak alanlari tutar.
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public Guid Id { get; set; }
         public DateTime CreatedDate { get; set; }
