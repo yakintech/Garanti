@@ -1,6 +1,9 @@
 ﻿using Garanti.Application.Queries;
+using Garanti.Domain.Models;
 using Garanti.Dto;
 using Garanti.Infrastructure;
+using Garanti.Infrastructure.Repositories.Base;
+using Garanti.Infrastructure.Repositories;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -40,15 +43,20 @@ namespace Garanti.Application.QueryHandlers
     public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery, GetCategoryByIdResponseDto>
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly LoggingRepository<Category> _loggingCategoryRepository;
 
-        public GetCategoryByIdQueryHandler(IUnitOfWork unitOfWork)
+        public GetCategoryByIdQueryHandler(IUnitOfWork unitOfWork
+            , ICategoryRepository categoryRepository)
         {
             _unitOfWork = unitOfWork;
+            _categoryRepository = categoryRepository;
+            _loggingCategoryRepository = new LoggingRepository<Category>(categoryRepository);
         }
 
         public async Task<GetCategoryByIdResponseDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
         {
-            var category = _unitOfWork.CategoryRepository.GetById(request.Id);
+            var category = _loggingCategoryRepository.GetById(request.Id);
             var result = new GetCategoryByIdResponseDto
             {
                 Id = category.Id,

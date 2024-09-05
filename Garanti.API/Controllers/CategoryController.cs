@@ -2,6 +2,7 @@
 using Garanti.Domain.Models;
 using Garanti.Dto;
 using Garanti.Infrastructure.Repositories;
+using Garanti.Infrastructure.Repositories.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,15 +12,17 @@ namespace Garanti.API.Controllers
     {
 
         private readonly ICategoryRepository _categoryRepository;
+        private readonly LoggingRepository<Category> _loggingCategoryRepository;
         public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
+            _loggingCategoryRepository = new LoggingRepository<Category>(categoryRepository);
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var categories = _categoryRepository.GetAll();
+            var categories = _loggingCategoryRepository.GetAll();
             var response = categories.Select(x => new GetAllCategoriesResponseDto
             {
                 Id = x.Id,

@@ -1,4 +1,5 @@
-﻿using Garanti.Domain.Models;
+﻿using Garanti.API.Models;
+using Garanti.Domain.Models;
 using Garanti.Dto;
 using Garanti.Dto.Order;
 using Garanti.Infrastructure;
@@ -73,6 +74,20 @@ namespace Garanti.API.Controllers
                 invoice.Balance += item.Quantity * product.Price;
 
                 _unitOfWork.InvoiceRepository.Create(invoice);
+
+
+
+                if(request.Platform == "Web")
+                {
+                    var webPlatform = new WebPlatform(new CreditCardPayment());
+                    webPlatform.MakePayment(item.Quantity * product.Price);
+                }
+                else if(request.Platform == "Mobile")
+                {
+                    var mobilePlatform = new MobilePlatform(new PayPalPayment());
+                    mobilePlatform.MakePayment(item.Quantity * product.Price);
+                }
+                
 
 
 

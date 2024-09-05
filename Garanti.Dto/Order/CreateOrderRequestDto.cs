@@ -10,6 +10,8 @@ namespace Garanti.Dto
     {
         public Guid CustomerId { get; set; }
         public List<OrderItemDto> OrderItems { get; set; }
+        public string PaymentMethod { get; set; }
+        public string Platform { get; set; }
 
 
 
