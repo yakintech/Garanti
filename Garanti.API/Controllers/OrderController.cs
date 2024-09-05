@@ -1,5 +1,6 @@
 ﻿using Garanti.Domain.Models;
 using Garanti.Dto;
+using Garanti.Dto.Order;
 using Garanti.Infrastructure;
 using Garanti.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,13 @@ namespace Garanti.API.Controllers
 
             _unitOfWork.OrderRepository.Create(order);
 
+            Invoice coreInvoice = new Invoice
+            {
+                InvoiceDate = DateTime.Now,
+                Tax = 0.18m,
+                Country = "USA"
+            };
+
             //order olustuktan sonra order detail olusturulur
             foreach (var item in request.OrderItems)
             {
@@ -59,6 +67,15 @@ namespace Garanti.API.Controllers
                 product.Stock -= item.Quantity;
                 _unitOfWork.ProductRepository.Update(product);
 
+                var invoice = (Invoice)coreInvoice.Clone();
+                var randomNumber = new Random().Next(1, 999999);
+                invoice.InvoiceNumber = "INV-" + randomNumber;
+                invoice.Balance += item.Quantity * product.Price;
+
+                _unitOfWork.InvoiceRepository.Create(invoice);
+
+
+
             }
 
 
@@ -69,3 +86,5 @@ namespace Garanti.API.Controllers
 
     }
 }
+
+

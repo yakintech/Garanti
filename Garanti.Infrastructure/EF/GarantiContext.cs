@@ -23,6 +23,7 @@ namespace Garanti.Infrastructure.EF
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<AdminUser> AdminUsers { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
 
     }
