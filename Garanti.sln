@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethodPattern", "Fac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyPattern", "ProxyPattern\ProxyPattern.csproj", "{232B4F39-0790-4834-AC64-D00879DFAE4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadePattern", "FacadePattern\FacadePattern.csproj", "{9E8066FC-8AB8-4269-AD08-8F7A453AA8A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,10 @@ Global
 		{232B4F39-0790-4834-AC64-D00879DFAE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{232B4F39-0790-4834-AC64-D00879DFAE4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{232B4F39-0790-4834-AC64-D00879DFAE4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8066FC-8AB8-4269-AD08-8F7A453AA8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8066FC-8AB8-4269-AD08-8F7A453AA8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8066FC-8AB8-4269-AD08-8F7A453AA8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8066FC-8AB8-4269-AD08-8F7A453AA8A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,6 +188,7 @@ Global
 		{BC4C5B6A-A809-40A8-94C3-97885415AB69} = {D34704A0-AB52-4FB4-90F0-43B93440BD8E}
 		{6174B797-AE50-47F1-99A1-6AA5EBF0164B} = {1943EA1C-75F2-40EC-A603-5B3573A30094}
 		{232B4F39-0790-4834-AC64-D00879DFAE4C} = {2E30E632-3FE3-4E8F-9E5B-B68F98B434D6}
+		{9E8066FC-8AB8-4269-AD08-8F7A453AA8A2} = {2E30E632-3FE3-4E8F-9E5B-B68F98B434D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8141D110-E6E0-46C9-8196-1D397C6C6EE1}
